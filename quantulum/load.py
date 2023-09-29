@@ -43,7 +43,7 @@ def get_dimension_permutations(entities, dimensions):
         else:
             new_dimensions[item['base']] += item['power']
 
-    final = [[{'base': i[0], 'power': i[1]} for i in new_dimensions.items()]]
+    final = [[{'base': i[0], 'power': i[1]} for i in list(new_dimensions.items())]]
     final.append(dimensions)
     final = [sorted(i, key=lambda x: x['base']) for i in final]
 

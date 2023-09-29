@@ -79,7 +79,7 @@ class Entity(object):
 
     def __repr__(self):
         """Representation method."""
-        msg = u'Entity(name="%s", uri=%s)'
+        msg = 'Entity(name="%s", uri=%s)'
         msg = msg % (self.name, self.uri)
         return msg.encode('utf-8')
 

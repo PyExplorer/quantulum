@@ -31,7 +31,7 @@ def get_numwords():
     for idx, word in enumerate(SCALES):
         numwords[word] = (10 ** (idx * 3 or 2), 0)
 
-    all_numbers = r'|'.join(r'\b%s\b' % i for i in numwords.keys() if i)
+    all_numbers = r'|'.join(r'\b%s\b' % i for i in list(numwords.keys()) if i)
 
     return all_numbers, numwords
 
@@ -52,8 +52,8 @@ OPERATORS = {'/': ' per ', ' per ': ' per ', ' a ': ' per ',
              '*': ' ', ' ': ' ', '·': ' ', 'x': ' '}
 
 ALL_NUM, NUMWORDS = get_numwords()
-FRACTIONS = re.escape(''.join(UNI_FRAC.keys()))
-SUPERSCRIPTS = re.escape(''.join(UNI_SUPER.keys()))
+FRACTIONS = re.escape(''.join(list(UNI_FRAC.keys())))
+SUPERSCRIPTS = re.escape(''.join(list(UNI_SUPER.keys())))
 
 MULTIPLIERS = r'|'.join(r'%s' % re.escape(i) for i in OPERATORS if
                         OPERATORS[i] == ' ')
@@ -104,9 +104,9 @@ REG_TXT = re.compile(TXT_PATTERN, re.VERBOSE | re.IGNORECASE)
 ###############################################################################
 def get_units_regex():
     """Build a compiled regex object."""
-    op_keys = sorted(OPERATORS.keys(), key=len, reverse=True)
-    unit_keys = sorted(l.UNITS.keys(), key=len, reverse=True)
-    symbol_keys = sorted(l.SYMBOLS.keys(), key=len, reverse=True)
+    op_keys = sorted(list(OPERATORS.keys()), key=len, reverse=True)
+    unit_keys = sorted(list(l.UNITS.keys()), key=len, reverse=True)
+    symbol_keys = sorted(list(l.SYMBOLS.keys()), key=len, reverse=True)
 
     exponent = r'(?:(?:\^?\-?[0-9%s]*)(?:\ cubed|\ squared)?)(?![a-zA-Z])' % \
                SUPERSCRIPTS

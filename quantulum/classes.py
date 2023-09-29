@@ -19,7 +19,7 @@ class Quantity(object):
 
     def __repr__(self):
         """Representation method."""
-        msg = u'Quantity(%g, "%s")'
+        msg = 'Quantity(%g, "%s")'
         msg = msg % (self.value, self.unit.name)
         return msg.encode('utf-8')
 
@@ -51,7 +51,7 @@ class Unit(object):
 
     def __repr__(self):
         """Representation method."""
-        msg = u'Unit(name="%s", entity=Entity("%s"), uri=%s)'
+        msg = 'Unit(name="%s", entity=Entity("%s"), uri=%s)'
         msg = msg % (self.name, self.entity.name, self.uri)
         return msg.encode('utf-8')
 
